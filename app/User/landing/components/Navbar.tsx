@@ -2,14 +2,19 @@
 import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 interface NavbarProps {
   isloggedIn: boolean;
 }
 export default function Navbar({ isloggedIn }: NavbarProps) {
   const router = useRouter();
-  const token =
-    localStorage.getItem("token") || sessionStorage.getItem("token");
+  const [token, setToken] = useState<string | null>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setToken(localStorage.getItem("token") || sessionStorage.getItem("token"));
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -33,7 +38,7 @@ export default function Navbar({ isloggedIn }: NavbarProps) {
     } catch (error) {
       console.error("حدث خطأ أثناء تسجيل الخروج من السيرفر:", error);
     }
-  }
+  };
 
   return (
     <header className="header" id="header">
