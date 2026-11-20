@@ -1,5 +1,6 @@
 "use client";
 
+
 import { useState, FormEvent, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image"; //
@@ -7,7 +8,7 @@ import axios from "axios";
 import Link from "next/link";
 // import error from "next/dist/api/error";
 
-export default function RegisterPage() {
+ function RegisterPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const errorapi = searchParams.get("error");
@@ -274,5 +275,12 @@ function GoogleIcon() {
       height={22}
       unoptimized
     />
+  );
+}
+export default function Register_Page () {
+  return (
+    <Suspense fallback={null}>
+      <RegisterPage />             
+    </Suspense>
   );
 }
