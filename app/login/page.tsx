@@ -1,14 +1,14 @@
 // app/login/page.tsx
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
+import { useState, FormEvent, useEffect, Suspense } from "react";
 
-export default function LoginPage() {
+export default function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -262,6 +262,9 @@ export default function LoginPage() {
               إنشاء حساب جديد
             </Link>
           </div>
+          <Suspense fallback={null}>
+            <LoginForm />
+          </Suspense>
         </div>
       </div>
     </div>
