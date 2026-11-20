@@ -1,0 +1,202 @@
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F5EFE6;
+    color: #2D2A26;
+    direction: rtl;
+}
+
+/* ===== ADMIN WRAPPER ===== */
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    width: 260px;
+    background-color: #2D2A26;
+    color: #F5EFE6;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+}
+
+.sidebar-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-align: center;
+    padding: 0 20px 24px;
+    border-bottom: 1px solid rgba(245, 239, 230, 0.1);
+    margin-bottom: 20px;
+}
+
+.sidebar-brand span {
+    color: #D97757;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    color: rgba(245, 239, 230, 0.7);
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+    background-color: rgba(217, 119, 87, 0.15);
+    color: #D97757;
+}
+
+.sidebar-menu a i {
+    width: 20px;
+    font-size: 1.1rem;
+}
+
+/* Sidebar Logout */
+.sidebar-logout {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 12px;
+    border: none;
+    background: transparent;
+    color: rgba(245, 239, 230, 0.6);
+    font-weight: 500;
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: auto; /* لدفع الزر للأسفل */
+}
+
+.sidebar-logout:hover {
+    background-color: rgba(245, 87, 108, 0.15);
+    color: #f5576c;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    flex: 1;
+    margin-right: 260px; /* مساحة السايدبار */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ===== TOPBAR ===== */
+.topbar {
+    background-color: #ffffff;
+    padding: 16px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E8DCC8;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.topbar h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #2D2A26;
+    margin: 0;
+}
+
+.sidebar-toggle {
+    display: none; /* يظهر فقط على الموبايل */
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    color: #2D2A26;
+    cursor: pointer;
+    margin-inline-end: 15px;
+}
+
+.topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.notification {
+    position: relative;
+    font-size: 1.2rem;
+    color: #6B655C;
+    cursor: pointer;
+}
+
+.notification .dot {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 8px;
+    background-color: #D97757;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.admin-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D97757;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* ===== CONTENT AREA ===== */
+.content-area {
+    padding: 30px;
+    flex: 1;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(100%); /* مخفي */
+    }
+    .sidebar.open {
+        transform: translateX(0); /* يظهر */
+    }
+    .main-content {
+        margin-right: 0; /* إزالة المساحة */
+    }
+    .sidebar-toggle {
+        display: block;
+    }
+}
